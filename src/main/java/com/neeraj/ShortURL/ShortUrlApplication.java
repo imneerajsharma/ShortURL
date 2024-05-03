@@ -8,6 +8,8 @@ public class ShortUrlApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ShortUrlApplication.class, args);
+		System.out.println("Hello world");
 	}
+
 
 }
