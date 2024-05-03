@@ -9,6 +9,9 @@ public class UrlErrorResponseDto {
         this.error = error;
     }
 
+    public UrlErrorResponseDto() {
+    }
+
     public String getStatus() {
         return status;
     }
