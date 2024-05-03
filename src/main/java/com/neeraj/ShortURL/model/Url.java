@@ -1,30 +1,35 @@
 package com.neeraj.ShortURL.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
+import jdk.jfr.DataAmount;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 public class Url {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long Id;
     @Lob
     private String originalUrl;
     private String shortLink;
+    private String shortLinkwith_localhost;
     private LocalDateTime creationDate;
     private LocalDateTime expirationDate;
 
-    public Url(long id, String originalUrl, String shortLink, LocalDateTime creationDate, LocalDateTime expirationDate) {
+    public Url(long id, String originalUrl, String shortLink, String shortLinkwith_localhost, LocalDateTime creationDate, LocalDateTime expirationDate) {
         Id = id;
         this.originalUrl = originalUrl;
         this.shortLink = shortLink;
+        this.shortLinkwith_localhost = shortLinkwith_localhost;
         this.creationDate = creationDate;
         this.expirationDate = expirationDate;
     }
+
+
 
     public Url() {
     }
@@ -69,12 +74,21 @@ public class Url {
         this.expirationDate = expirationDate;
     }
 
+    public String getShortLinkwith_localhost() {
+        return shortLinkwith_localhost;
+    }
+
+    public void setShortLinkwith_localhost(String shortLinkwith_localhost) {
+        this.shortLinkwith_localhost = shortLinkwith_localhost;
+    }
+
     @Override
     public String toString() {
         return "Url{" +
                 "Id=" + Id +
                 ", originalUrl='" + originalUrl + '\'' +
                 ", shortLink='" + shortLink + '\'' +
+                ", shortLinkwith_localhost='" + shortLinkwith_localhost + '\'' +
                 ", creationDate=" + creationDate +
                 ", expirationDate=" + expirationDate +
                 '}';
