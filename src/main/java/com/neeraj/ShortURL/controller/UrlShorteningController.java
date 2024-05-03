@@ -34,6 +34,7 @@ public class UrlShorteningController {
             urlResponseDto.setOriginalUrl(urlToRet.getOriginalUrl());
             urlResponseDto.setExpirationDate(urlToRet.getExpirationDate());
             urlResponseDto.setShortLink(urlToRet.getShortLink());
+            urlResponseDto.setShortLinkwith_localhost(urlToRet.getShortLinkwith_localhost());
             return new ResponseEntity<UrlResponseDto>(urlResponseDto, HttpStatus.OK);
         }
 

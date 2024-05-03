@@ -46,30 +46,6 @@ public class UrlServiceImpl implements UrlService{
         LocalDateTime expirationDateToRet = LocalDateTime.parse(expirationDate);
         return expirationDateToRet;
     }
-//    private String encodeUrl(String url) {
-//        String prefix = "http://localhost:8080/"; // Replace "example.com" with your domain
-//        String encodedUrl = "";
-//        LocalDateTime time = LocalDateTime.now();
-//        String hash = Hashing.murmur3_32()
-//                .hashString(url.concat(time.toString()), StandardCharsets.UTF_8)
-//                .toString();
-//        // Extract the last 8 characters from the hash as the short code
-//        String shortCode = hash.substring(hash.length() - 8);
-//        encodedUrl = prefix + shortCode;
-//        return encodedUrl;
-//    }
-
-//    private String encodeUrl2(String url) {
-//        String prefix = "http://localhost:8080/";
-//        String encodedUrl = "";
-//        LocalDateTime time = LocalDateTime.now();
-//        encodedUrl = prefix + Hashing.murmur3_32()
-//                .hashString(url.concat(time.toString()), StandardCharsets.UTF_8)
-//                .toString();
-//        System.out.println(encodedUrl);
-//        return  encodedUrl;
-//    }
-
     private String encodeUrl(String url) {
         String encodedUrl = "";
         LocalDateTime time = LocalDateTime.now();

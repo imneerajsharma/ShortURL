@@ -1,46 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles.css';
 
 const Home = () => {
   const [originalUrl, setOriginalUrl] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
   const [error, setError] = useState('');
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     console.log('Form submitted');
-//     try {
-//       const response = await axios.post('http://localhost:8080/generate', { originalUrl });
-//       if (response.status === 200) {
-//         setShortenedUrl(response.data.shortLink);
-//         setError('');
-//       } else {
-//         setError(response.data.message || 'An error occurred while processing your request.');
-//         setShortenedUrl('');
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//       setError('An error occurred while processing your request.');
-//       setShortenedUrl('');
-//     }
-//   };
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form submitted');
     try {
-    //   const response = await axios.post('http://localhost:8080/generate', { originalUrl });
-    const response = await axios({
+      const response = await axios({
         method: 'post',
         url: 'http://localhost:8080/generate',
         data: {
-            "url": "https://www.apple.com/ca/",
-            "expirationDate":"2024-09-15T23:05:30"          
+          "url": originalUrl,
+          "expirationDate": "2024-09-15T23:05:30"
         }
       });
       console.log('Response ', response);
       if (response.status === 200) {
         setShortenedUrl(response.data.shortLink);
+        setError('');
+        const shortLinkWithLocalhost = response.data.shortLinkwith_localhost;
+        setShortenedUrl(shortLinkWithLocalhost);
         setError('');
       } else {
         setError(response.data.message || 'An error occurred while processing your request.');
@@ -52,32 +35,32 @@ const handleSubmit = async (e) => {
       setShortenedUrl('');
     }
   };
-  
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 ">
-      <h1 className="text-4xl font-bold mb-8 text-white">Short URL Generator</h1>
-      <form onSubmit={handleSubmit} className="flex items-center">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 text-white">
+      <h1 className="text-4xl font-bold mb-8">Short URL Generator</h1>
+      <form onSubmit={handleSubmit} className="flex items-center mb-4">
+        <button type="submit" className="bg-green-500 mr-2 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l focus:outline-none" style={{ height: '2.5rem' }}>
+          Generate Short URL
+        </button>
         <input
           type="text"
           placeholder="Enter URL"
           value={originalUrl}
           onChange={(e) => setOriginalUrl(e.target.value)}
-          className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:border-blue-500 bg-white text-gray-900 "
-          style={{ width: '800px' ,height: '2.5rem'}} // Adjust the width as needed
+          className="border border-gray-300 rounded-r py-2 px-4 focus:outline-none bg-white text-gray-900"
+          style={{ width: '400px', height: '2.5rem' }} // Adjust the width as needed
         />
-        <button type="submit" className="bg-green-500 font-bold text-white py-2 px-4 rounded-r hover:bg-blue-600 focus:outline-none"
-         style={{ height: '2.5rem' }}>
-          Generate Short URL
-        </button>
-      </form >
-      {error && <p className="text-red-500 mt-2">{error}</p>}
+      </form>
+
       {shortenedUrl && (
-        <div className="mt-8 border border-gray-300 rounded py-2 px-4 bg-white" style={{width:"400px"}}>
-          <p className="text-lg font-semibold">Shortened URL:</p>
-          <a href={shortenedUrl} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">{shortenedUrl}</a>
+        <div className="flex items-center mt-4">
+          <p className="text-lg font-semibold mr-2 bg-green-500 text-white py-2 px-4 rounded-l" style={{ height: '2.5rem' }}>Shortened URL:</p>
+          <a href={shortenedUrl} target="_blank" rel="noopener noreferrer" className="bg-white text-black py-2 px-4 mr-2 rounded-r focus:outline-none" style={{ height: '2.5rem' }}>{shortenedUrl}</a>
         </div>
       )}
+
+      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   );
 };

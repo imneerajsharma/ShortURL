@@ -3,10 +3,12 @@ package com.neeraj.ShortURL.model;
 public class UrlDto {
     private String url;
     private String expirationDate;  //optional
+    private String shortLinkwith_localhost;
 
-    public UrlDto(String url, String expirationDate) {
+    public UrlDto(String url, String expirationDate, String shortLinkwith_localhost) {
         this.url = url;
         this.expirationDate = expirationDate;
+        this.shortLinkwith_localhost = shortLinkwith_localhost;
     }
 
     public UrlDto() {
@@ -28,11 +30,20 @@ public class UrlDto {
         this.expirationDate = expirationDate;
     }
 
+    public String getShortLinkwith_localhost() {
+        return shortLinkwith_localhost;
+    }
+
+    public void setShortLinkwith_localhost(String shortLinkwith_localhost) {
+        this.shortLinkwith_localhost = shortLinkwith_localhost;
+    }
+
     @Override
     public String toString() {
         return "UrlDto{" +
                 "url='" + url + '\'' +
                 ", expirationDate='" + expirationDate + '\'' +
+                ", shortLinkwith_localhost='" + shortLinkwith_localhost + '\'' +
                 '}';
     }
 }
