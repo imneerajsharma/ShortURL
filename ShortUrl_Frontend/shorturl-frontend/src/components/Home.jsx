@@ -37,7 +37,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white">
       <h1 className="text-4xl font-bold mb-8">Short URL Generator</h1>
       <form onSubmit={handleSubmit} className="flex items-center mb-4">
         <button type="submit" className="bg-green-500 mr-2 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l focus:outline-none" style={{ height: '2.5rem' }}>

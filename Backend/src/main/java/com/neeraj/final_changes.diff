@@ -1,0 +1,16 @@
+diff --git a/.DS_Store b/.DS_Store
+index a2a5198..456b754 100644
+Binary files a/.DS_Store and b/.DS_Store differ
+diff --git a/ShortUrl_Frontend/shorturl-frontend/src/components/Home.jsx b/ShortUrl_Frontend/shorturl-frontend/src/components/Home.jsx
+index aa3533b..f60ea71 100644
+--- a/ShortUrl_Frontend/shorturl-frontend/src/components/Home.jsx
++++ b/ShortUrl_Frontend/shorturl-frontend/src/components/Home.jsx
+@@ -37,7 +37,7 @@ const Home = () => {
+   };
+ 
+   return (
+-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-700 text-white">
++    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900 text-white">
+       <h1 className="text-4xl font-bold mb-8">Short URL Generator</h1>
+       <form onSubmit={handleSubmit} className="flex items-center mb-4">
+         <button type="submit" className="bg-green-500 mr-2 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-l focus:outline-none" style={{ height: '2.5rem' }}>
